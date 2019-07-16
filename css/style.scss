@@ -1,0 +1,99 @@
+$primary-color: #36a5d9;
+$font: Kanit, sans-serif;
+$footer-font-color: #c5c9d1;
+html {
+	font-size: 100%;
+	body {
+		font-size: 1em;
+	}
+}
+* {
+	font-family: $font;
+
+	body {
+		background: url(background-image.png);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: 1920px 1080px;
+
+		.container {
+			.navbar {
+				.navbar-brand {
+					background-color: $primary-color;
+				}
+				.collapse {
+					.navbar-nav {
+						.nav-item {
+							.nav-link:hover {
+								background-color: $primary-color;
+							}
+							.dropdown:hover {
+								background-color: $primary-color;
+								.dropdown-menu {
+									display: block;
+
+									.dropdown-item {
+										color: white;
+									}
+									.dropdown-item:hover {
+										background-color: $primary-color;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.row {
+			.d-flex {
+				.p-1 {
+					form {
+						#input1 {
+							background-color: $primary-color;
+							border-radius: 5px;
+							border: 1px solid $primary-color;
+							color: #fdf5f5;
+							font-weight: bold;
+							padding: 10px 15px 10px 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+body {
+	.container {
+		footer {
+			margin-bottom: 10px;
+			.jumbo {
+				font-family: Arial, Helvetica, sans-serif;
+				background-color: #303440;
+				padding: 20px;
+				color: $footer-font-color;
+				font-size: 1em;
+				font-weight: lighter 100;
+			}
+		}
+	}
+}
+.back-line {
+	display: block;
+	margin-top: 5px;
+	background-color: $primary-color;
+	border: 1px solid $primary-color;
+}
+.title {
+	color: white;
+	background-color: $primary-color;
+	padding: 5px 10px 5px 10px;
+	font-size: 1em;
+	margin: 0;
+}
+
+
+
+
