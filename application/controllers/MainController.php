@@ -39,7 +39,26 @@ class MainController extends CI_Controller{
 
         if($this->form_validation->run() === FALSE){
             $this->admin();
+        }else{
+            $this->admin_backend();
         }
+    }
+
+    public function admin_backend(){
+        $data['table'] = $this->mainmodel->selectTableData();
+        
+        $this->load->view('backend/backend_layout/backend_header');
+        $this->load->view('backend/backend_page/backend_admin',$data); 
+        $this->load->view('backend/backend_layout/backend_footer');
+    }
+
+    //แสดงข้อมูลนักเรียนเป็นรายคน
+    public function student_information($id){
+        $data['information'] = $this->mainmodel->selectStudentInformation($id);
+        $this->load->view('backend/backend_layout/backend_header');
+        $this->load->view('backend/backend_page/student_information',$data);
+        $this->load->view('backend/backend_layout/backend_footer');
+        
     }
 
     public function messageset(){
@@ -52,15 +71,8 @@ class MainController extends CI_Controller{
         if(!isset($result)){
             $this->form_validation->set_message('messageset','ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
             return FALSE;
-        }else{
-            $this->backend();
         }
-    }
-
-    public function backend(){
-        $this->load->view('backend/backend_layout/backend_header');
-        $this->load->view('backend/backend_page/insert_member'); 
-        $this->load->view('backend/backend_layout/backend_footer');
+        
     }
 
     public function schoolhistory(){
@@ -112,11 +124,13 @@ class MainController extends CI_Controller{
         }else{
             echo "Fail Insert";
         }
-        
-
-        
-        
     }
+
+    
+
+
+
+
 
     
 
