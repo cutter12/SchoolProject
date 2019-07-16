@@ -7,6 +7,7 @@ class MainController extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->database();
+        $this->load->model("mainmodel");
     }
 
     public function index(){
@@ -83,28 +84,41 @@ class MainController extends CI_Controller{
         $this->load->view('layout/footer');
     }
 
-    public function register_data_in(){
-        $this->load->model('mainmodel');
-        $studentTableQuery = $this->mainmodel->studentTableInsert(
-            $this->input->post('idcard'),
-            $this->input->post('prefix'),
-            $this->input->post('fname'),
-            $this->input->post('lname'),
-            $this->input->post('sex')
-        );
-        $data['message'] = "";
-        
-        if($studentTableQuery > 0){
-            $data['message'] = "Pass";
-        }else{
-            $data['message'] = "Failed";
-        }
 
-        $this->load->view('page/register',$data);
+    public function student(){
         
+        /* ตัวแปรสำหรับ MainModel */
+        // Student Table
+        $idcard = $this->input->post('idcard');
+        $prefix = $this->input->post('prefix');
+        $fname = $this->input->post('fname');
+        $lname = $this->input->post('lname');
+        $sex = $this->input->post('sex');
+        //Address Table
+        $address_information = $this->input->post('address_information');
+        $zipcode = $this->input->post('zipcode');
+        //Phone Number Table 
+        $phonenumber1 = $this->input->post('phonenumber');
+        //Branch table
+        $branch_name = $this->input->post('porworchor');
+        $row_count = $this->mainmodel->studentTableInsert($idcard,$prefix,$fname,$lname,$sex);
+        $address_query = $this->mainmodel->addressTableInsert($address_information,$zipcode,$row_count);
+        $phonenumber_query = $this->mainmodel->phonenumberTableInsert($phonenumber1,$row_count);
+        $branch_query = $this->mainmodel->branchTableInsert($branch_name,$row_count);
+
+        if($row_count !== 0 && $address_query !== 0 && $phonenumber_query !== 0 && $branch_query !== 0){
+            echo "Insert Data Complete";
+
+        }else{
+            echo "Fail Insert";
+        }
+        
+
         
         
     }
+
+    
 
     
     

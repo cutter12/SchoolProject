@@ -30,7 +30,7 @@
 <div id="show" class=" mt-3"><!-- อย่าลืมใส่ class collapse -->
     <div class="mb-3">
         <!-- ส่วนของฟอร์มการสมัคร -->
-        <form action="<?php echo base_url("/maincontroller/register_data_in");?>" method="post" id="register_form">
+        <form action="<?php echo base_url("/maincontroller/student");?>" method="post" id="register_form">
         <h5 class="mt-3">ข้อมูลทั่วไป</h5>
             <div class="form-row">
                 <div class="input-group col-md-6">
@@ -51,7 +51,7 @@
             <div class="form-row mt-2">
                 <div class="input-group col-md-4">
                     <div class="input-group-prepend">
-                    <!-- ข้อมูลนำเข้า คำนำหน้าชื่อ => nameprefix -->
+                    <!-- ข้อมูลนำเข้า คำนำหน้าชื่อ => prefix -->
                         <label for="" class="input-group-text"><small>คำนำหน้าชื่อ</small></label>
                     </div>
                     <select name="prefix" id="" class="custom-select">
@@ -93,7 +93,7 @@
                 <!-- ข้อมูลนำเข้า ที่อยู่ที่สามารถติดต่อได้ => address -->
                     <span class="input-group-text"><small>ที่อยู่ติดต่อได้</small></span>
                 </div>
-                <input type="text" name="address" class="form-control form-control-sm text-center" id="address_input">
+                <input type="text" name="address_information" class="form-control form-control-sm text-center" id="address_input">
             </div>
             <div class="input-group col-md-3">
                 <div class="input-group-prepend">
@@ -116,14 +116,14 @@
                 <!-- ข้อมูลนำเข้า จังหวัดของสถานศึกษาเดิม => school_province -->
                     <span class="input-group-text"><small>จังหวัดของสถานศึกษา</small></span>
                 </div>
-                <input type="text" class="form-control form-control-sm text-center" name="school_province" size="50" id="student_school_input">
+                <input type="text" class="form-control form-control-sm text-center" name="schoolprovince" size="50" id="student_school_input">
             </div>
             <div class="col-md-4 input-group">
                 <div class="input-group-prepend">
                 <!-- ข้อมูลนำเข้า ชื่อสถานศึกษา => schoolname -->
                     <span class="input-group-text"><small>ชื่อสถานศึกษา</small></span>
                 </div>
-                <input type="text" class="form-control form-control-sm" name="school_name" id="schoolname_input">
+                <input type="text" class="form-control form-control-sm" name="school    name" id="schoolname_input">
             </div>
             
             

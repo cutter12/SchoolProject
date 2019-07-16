@@ -16,7 +16,6 @@ class MainModel extends CI_Model{
         return $query->row(); 
     }
 
-
     public function studentTableInsert($idcard,$prefix,$fname,$lname,$sex){
         $data = array(
             'idcard'=>$idcard,
@@ -25,31 +24,30 @@ class MainModel extends CI_Model{
             'lname'=>$lname,
             'sex'=>$sex
         );
-        $this->db->insert_string('student',$data);
-        return $this->db->affected_rows();
+        $this->db->insert('student',$data);
+        $query = $this->db->count_all('student');
+
+        return $query;
+
+         
         
     }
-    public function addressTableInsert($housecode,$mubran,$tambol,$amphor,$province,$zipcode,$student_id){
+    public function addressTableInsert($address_information,$zipcode,$student_id){
         $data = array(
-            'house_code'=>$housecode,
-            'mubarn'=>$mubarn,
-            'tambol'=>$tambol,
-            'amphor'=>$amphor,
-            'province'=>$province,
-            'zipcode'=>$zipcode,
-            'student_id'=>$student_id
+            'address_information' => $address_information,
+            'zipcode' => $zipcode,
+            'student_id' => $student_id
         );
-        $this->db->insert_string('address',$data);
-        return $this->db->affected_rows();
+        return $this->db->insert('address',$data);
     }
-    public function phonenumberTableInsert($phonenumber1,$phonenumber2){
+
+    public function phonenumberTableInsert($phonenumber1,$student_id){
         $data = array(
             'phonenumber1'=>$phonenumber1,
-            'phonenumber2'=>$phonenumber2,
             'student_id'=>$student_id 
         );
-        $this->db->insert_string('phonenumber',$data);
-        return $this->db->affected_rows();
+        
+        return $this->db->insert('phonenumber',$data);
     }
 
     public function branchTableInsert($branch_name,$student_id){
@@ -57,8 +55,8 @@ class MainModel extends CI_Model{
             'branch_name'=>$branch_name,
             'student_id'=>$student_id
         );
-        $this->db->insert_string('branch',$data);
-        return $this->db->affected_rows();
+        
+        return $this->db->insert('branch',$data);
     }
     
 
